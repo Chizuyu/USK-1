@@ -14,7 +14,7 @@ class StatsOverview extends StatsOverviewWidget
         return [
             Stat::make('Total Peserta', Participant::count())
                 ->description('Peserta yang terdaftar')
-                ->descriptionIcon('heroicon-m-user-group')
+                ->descriptionIcon('heroicon-m-users')
                 ->color('primary'),
             Stat::make('Total Skema', Schema::count())
                 ->description('Skema Sertifikasi aktif')
