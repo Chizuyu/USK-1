@@ -29,6 +29,7 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->spa(hasPrefetching:true)
             ->login()
+            ->registration()
             ->brandLogo(asset('bnsp.png'))
             ->brandLogoHeight('6rem')
             ->colors([
