@@ -45,6 +45,7 @@ class AdminPanelProvider extends PanelProvider
                 AccountWidget::class,
                 FilamentInfoWidget::class,
             ])
+            ->renderHook('panels::auth.login.form.after', fn () => view('components.back-to-dashboard'))
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
