@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Pages\Auth\Register;
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -30,7 +31,7 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->spa(hasPrefetching: true)
             ->login()
-            ->registration()
+            ->registration(Register::class)
             ->brandLogo(asset('bnsp.png'))
             ->brandLogoHeight('6rem')
             ->colors([
