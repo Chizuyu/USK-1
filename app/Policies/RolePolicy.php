@@ -2,35 +2,35 @@
 
 namespace App\Policies;
 
-use App\Models\User;
+use Illuminate\Foundation\Auth\User as AuthUser;
 
 class RolePolicy
 {
     /**
      * Tentukan siapa saja yang boleh melihat menu Roles
      */
-    public function viewAny(User $user): bool
+    public function viewAny(AuthUser $authUser): bool
     {
-        return $user->hasRole(['super_admin', 'admin']);
+        return $authUser->hasRole(['super_admin', 'admin']);
     }
 
-    public function view(User $user): bool
+    public function view(AuthUser $authUser): bool
     {
-        return $user->hasRole(['super_admin', 'admin']);
+        return $authUser->hasRole(['super_admin', 'admin']);
     }
 
-    public function create(User $user): bool
+    public function create(AuthUser $authUser): bool
     {
-        return $user->hasRole(['super_admin', 'admin']);
+        return $authUser->hasRole(['super_admin', 'admin']);
     }
 
-    public function update(User $user): bool
+    public function update(AuthUser $authUser): bool
     {
-        return $user->hasRole(['super_admin', 'admin']);
+        return $authUser->hasRole(['super_admin', 'admin']);
     }
 
-    public function delete(User $user): bool
+    public function delete(AuthUser $authUser): bool
     {
-        return $user->hasRole(['super_admin', 'admin']);
+        return $authUser->hasRole(['super_admin', 'admin']);
     }
 }
