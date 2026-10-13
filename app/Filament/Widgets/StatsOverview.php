@@ -34,7 +34,7 @@ class StatsOverview extends StatsOverviewWidget
         }
 
         return [
-            Stat::make('Status Saya', 'Terdaftar')
+            
         ];
     }
 }
