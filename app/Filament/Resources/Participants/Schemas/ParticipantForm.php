@@ -20,14 +20,23 @@ class ParticipantForm
                     ->searchable()
                     ->preload(),
                 TextInput::make('nisn')
+                    ->numeric()
+                    ->minLength(10)
+                    ->maxLength(10)
                     ->required(),
                 TextInput::make('name')
+                    ->regex('/^[a-zA-Z\s]+$/')
+                    ->validationMessages([
+                        'regex' => 'Kolom nama hanya boleh berisi huruf dan spasi.',
+                    ])
                     ->required(),
                 Select::make('gender')
                     ->options(['male' => 'Male', 'female' => 'Female'])
                     ->required(),
                 TextInput::make('phone_number')
                     ->tel()
+                    ->minLength(12)
+                    ->maxLength(12)
                     ->required(),
                 Textarea::make('address')
                     ->columnSpanFull(),
