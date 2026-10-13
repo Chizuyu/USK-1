@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -27,13 +28,16 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
-            ->spa(hasPrefetching:true)
+            ->spa(hasPrefetching: true)
             ->login()
             ->registration()
             ->brandLogo(asset('bnsp.png'))
             ->brandLogoHeight('6rem')
             ->colors([
                 'primary' => Color::Blue,
+            ])
+            ->plugins([
+                FilamentShieldPlugin::make(), // <-- Daftarkan di sini
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
@@ -45,7 +49,7 @@ class AdminPanelProvider extends PanelProvider
                 AccountWidget::class,
                 FilamentInfoWidget::class,
             ])
-            ->renderHook('panels::auth.login.form.after', fn () => view('components.back-to-dashboard'))
+            ->renderHook('panels::auth.login.form.after', fn() => view('components.back-to-dashboard'))
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
