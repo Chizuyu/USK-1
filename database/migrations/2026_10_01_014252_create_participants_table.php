@@ -12,12 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('participants', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('schema_id')->constrained('schemas')->cascadeOnDelete();
-            $table->string('nisn')->unique();        
+             $table->id();
+            
+            $table->foreignId('user_id')->nullable()->constrained('users')->cascadeOnDelete();
+            
+            $table->foreignId('schema_id')->nullable()->constrained('schemas')->nullOnDelete();
+            $table->string('nisn')->nullable()->unique();        
             $table->string('name');
-            $table->enum('gender', ['male', 'female']);
-            $table->string('phone_number');
+            $table->enum('gender', ['male', 'female'])->nullable();
+            $table->string('phone_number')->nullable();
             $table->text('address')->nullable();
             $table->timestamps();
         });
