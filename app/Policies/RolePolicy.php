@@ -1,0 +1,36 @@
+<?php
+
+namespace App\Policies;
+
+use App\Models\User;
+
+class RolePolicy
+{
+    /**
+     * Tentukan siapa saja yang boleh melihat menu Roles
+     */
+    public function viewAny(User $user): bool
+    {
+        return $user->hasRole(['super_admin', 'admin']);
+    }
+
+    public function view(User $user): bool
+    {
+        return $user->hasRole(['super_admin', 'admin']);
+    }
+
+    public function create(User $user): bool
+    {
+        return $user->hasRole(['super_admin', 'admin']);
+    }
+
+    public function update(User $user): bool
+    {
+        return $user->hasRole(['super_admin', 'admin']);
+    }
+
+    public function delete(User $user): bool
+    {
+        return $user->hasRole(['super_admin', 'admin']);
+    }
+}
