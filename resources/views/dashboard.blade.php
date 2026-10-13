@@ -9,18 +9,21 @@
 </head>
 
 <body style="background-color: #ffffff;">
-    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+    <nav class="navbar bg-white border-bottom py-2">
         <div class="container-fluid">
-            <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
-                <img src="{{ asset('bnsp.png') }}" alt="Logo" style="width: 8rem; height: 8rem;" class="me-2">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <div class="ms-auto">
-                    <a href="/admin/login" class="btn btn-primary btn-sm px-4 py-2">Login</a>
+            <div class="row w-100 align-items-center mx-0">
+                <div class="col-3">
+                    <a href="{{ url('/') }}">
+                        <img src="{{ asset('bnsp.png') }}" alt="Logo" style="height: 6rem;">
+                    </a>
                 </div>
+                <div class="col-6 text-center">
+                    <span class="fw-bold fs-5">Aplikasi Pengelolaan Data Peserta Sertifikasi</span>
+                </div>
+                <div class="col-3 text-end">
+                    <a href="/admin/login" class="btn btn-primary px-4 py-2">Login</a>
+                </div>
+
             </div>
         </div>
     </nav>
