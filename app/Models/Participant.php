@@ -18,15 +18,15 @@ class Participant extends Model
     ];
 
     protected static function booted(): void
-{
-    static::updated(function ($participant) {
-        if ($participant->wasChanged('name') && $participant->user) {
-            $participant->user->update([
-                'name' => $participant->name,
-            ]);
-        }
-    });
-}
+    {
+        static::updated(function ($participant) {
+            if ($participant->wasChanged('name') && $participant->user) {
+                $participant->user->update([
+                    'name' => $participant->name,
+                ]);
+            }
+        });
+    }
 
     public function schema()
     {
