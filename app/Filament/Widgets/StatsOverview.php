@@ -6,12 +6,15 @@ use App\Models\Participant;
 use App\Models\Schema;
 use Filament\Widgets\StatsOverviewWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class StatsOverview extends StatsOverviewWidget
 {
     protected function getStats(): array
     {
-        $user = auth()->user();
+        /** @var User|null $user */
+        $user = Auth::user();
 
         if ($user->hasRole(['super_admin', 'admin'])) {
             return [

@@ -61,6 +61,7 @@ class ParticipantResource extends Resource
     public static function getEloquentQuery(): Builder
     {
         $query = parent::getEloquentQuery();
+         /** @var User|null $user */
         $user = Filament::auth()->user();
 
         if ($user?->hasRole(['super_admin', 'admin'])) {
