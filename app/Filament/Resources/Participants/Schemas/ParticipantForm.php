@@ -23,7 +23,11 @@ class ParticipantForm
                     ->numeric()
                     ->minLength(10)
                     ->maxLength(10)
-                    ->required(),
+                    ->required()
+                    ->unique(table: 'participants', column: 'nisn', ignoreRecord: true)
+                    ->validationMessages([
+                        'unique' => 'NISN ini sudah terdaftar oleh Participant lain.',
+                    ]),
                 Select::make('name')
                     ->label('Name')
                     ->relationship('user', 'name', fn($query) => $query->role('Participant'))

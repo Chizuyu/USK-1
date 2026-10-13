@@ -87,7 +87,11 @@ class ParticipantsTable
                             ->numeric()
                             ->minLength(10)
                             ->maxLength(10)
-                            ->required(),
+                            ->required()
+                            ->unique(table: 'participants', column: 'nisn', ignoreRecord: true)
+                            ->validationMessages([
+                                'unique' => 'NISN ini sudah terdaftar oleh Participant lain.',
+                            ]),
                         TextInput::make('name')
                             ->maxLength(55)
                             ->regex('/^[a-zA-Z\s]+$/')
