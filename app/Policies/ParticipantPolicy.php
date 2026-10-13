@@ -29,7 +29,11 @@ class ParticipantPolicy
 
     public function update(AuthUser $authUser, Participant $participant): bool
     {
-        if ($authUser->hasRole('Student')) {
+        if ($authUser->hasRole(['super_admin', 'admin'])) {
+            return true;
+        }
+        
+        if ($authUser->hasRole('Participant')) {
             return $participant->user_id === $authUser->id;
         }
 

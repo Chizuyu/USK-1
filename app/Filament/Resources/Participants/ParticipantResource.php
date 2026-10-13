@@ -11,9 +11,11 @@ use App\Filament\Resources\Participants\Schemas\ParticipantInfolist;
 use App\Filament\Resources\Participants\Tables\ParticipantsTable;
 use App\Models\Participant;
 use BackedEnum;
+use Filament\Facades\Filament;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 
 class ParticipantResource extends Resource
 {
@@ -54,5 +56,21 @@ class ParticipantResource extends Resource
             // 'view' => ViewParticipant::route('/{record}'),
             // 'edit' => EditParticipant::route('/{record}/edit'),
         ];
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        $query = parent::getEloquentQuery();
+        $user = Filament::auth()->user();
+
+        if ($user?->hasRole(['super_admin', 'admin'])) {
+            return $query;
+        }
+
+        if ($user?->hasRole('Participant')) {
+            return $query->where('user_id', $user->id);
+        }
+
+        return $query;
     }
 }
