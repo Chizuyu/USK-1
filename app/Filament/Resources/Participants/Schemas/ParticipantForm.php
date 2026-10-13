@@ -24,11 +24,10 @@ class ParticipantForm
                     ->minLength(10)
                     ->maxLength(10)
                     ->required(),
-                TextInput::make('name')
-                    ->regex('/^[a-zA-Z\s]+$/')
-                    ->validationMessages([
-                        'regex' => 'Kolom nama hanya boleh berisi huruf dan spasi.',
-                    ])
+                Select::make('name')
+                    ->label('Name')
+                    ->relationship('user', 'name', fn($query) => $query->role('Participant'))
+                    ->preload()
                     ->required(),
                 Select::make('gender')
                     ->options(['male' => 'Male', 'female' => 'Female'])
