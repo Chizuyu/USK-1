@@ -34,8 +34,8 @@ class ParticipantForm
                     ->required(),
                 TextInput::make('phone_number')
                     ->tel()
-                    ->minLength(12)
-                    ->maxLength(12)
+                    ->minLength(11)
+                    ->maxLength(13)
                     ->required(),
                 Textarea::make('address')
                     ->columnSpanFull(),

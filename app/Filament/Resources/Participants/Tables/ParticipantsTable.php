@@ -89,9 +89,10 @@ class ParticipantsTable
                             ->maxLength(10)
                             ->required(),
                         TextInput::make('name')
+                            ->maxLength(55)
                             ->regex('/^[a-zA-Z\s]+$/')
                             ->validationMessages([
-                                'regex' => 'Kolom nama hanya boleh berisi huruf dan spasi.',
+                                'regex' => 'Nama hanya boleh berupa huruf dan spasi, tidak boleh ada angka atau karakter khusus!',
                             ])
                             ->required(),
                         Select::make('gender')
