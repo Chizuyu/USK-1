@@ -58,7 +58,7 @@
                     </a>
                 </div>
                 <div class="col-9 text-end">
-                    <a href="/admin/login" class="btn btn-primary px-4 py-2">Masuk / Daftar</a>
+                    <a href="/bnsp/login" class="btn btn-primary px-4 py-2">Masuk / Daftar</a>
                 </div>
 
             </div>
