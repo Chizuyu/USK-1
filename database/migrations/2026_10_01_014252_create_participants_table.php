@@ -13,15 +13,17 @@ return new class extends Migration
     {
         Schema::create('participants', function (Blueprint $table) {
              $table->id();
-            
             $table->foreignId('user_id')->nullable()->constrained('users')->cascadeOnDelete();
-            
             $table->foreignId('schema_id')->nullable()->constrained('schemas')->nullOnDelete();
             $table->string('nisn')->nullable()->unique();        
             $table->string('name');
             $table->enum('gender', ['male', 'female'])->nullable();
             $table->string('phone_number')->nullable();
             $table->text('address')->nullable();
+            $table->string('ktp')->nullable();
+            $table->string('ijazah')->nullable();
+            $table->string('sertifikat')->nullable();
+            $table->string('status')->default('pending')->nullable();
             $table->timestamps();
         });
     }
