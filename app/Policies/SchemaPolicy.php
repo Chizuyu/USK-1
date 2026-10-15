@@ -11,7 +11,7 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 class SchemaPolicy
 {
     use HandlesAuthorization;
-
+    
     public function viewAny(AuthUser $authUser): bool
     {
         return $authUser->can('ViewAny:Schema');
@@ -19,7 +19,7 @@ class SchemaPolicy
 
     public function view(AuthUser $authUser, Schema $schema): bool
     {
-        return $authUser->can('ViewAny:Schema');
+        return $authUser->can('View:Schema');
     }
 
     public function create(AuthUser $authUser): bool
@@ -71,4 +71,5 @@ class SchemaPolicy
     {
         return $authUser->can('Reorder:Schema');
     }
+
 }

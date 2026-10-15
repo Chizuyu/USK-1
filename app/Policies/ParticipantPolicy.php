@@ -11,7 +11,7 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 class ParticipantPolicy
 {
     use HandlesAuthorization;
-
+    
     public function viewAny(AuthUser $authUser): bool
     {
         return $authUser->can('ViewAny:Participant');
@@ -29,14 +29,6 @@ class ParticipantPolicy
 
     public function update(AuthUser $authUser, Participant $participant): bool
     {
-        if ($authUser->hasRole(['super_admin', 'admin'])) {
-            return true;
-        }
-        
-        if ($authUser->hasRole('Participant')) {
-            return $participant->user_id === $authUser->id;
-        }
-
         return $authUser->can('Update:Participant');
     }
 
@@ -79,4 +71,5 @@ class ParticipantPolicy
     {
         return $authUser->can('Reorder:Participant');
     }
+
 }
