@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Register extends BaseRegister
 {
-
     protected function getNameFormComponent(): Component
     {
         return parent::getNameFormComponent()
