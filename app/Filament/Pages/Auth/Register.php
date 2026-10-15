@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Register extends BaseRegister
 {
+
     protected function getNameFormComponent(): Component
     {
         return parent::getNameFormComponent()
@@ -28,6 +29,7 @@ class Register extends BaseRegister
 
         $user->participant()->create([
             'name' => $user->name,
+            'status' => 'pending'
         ]);
 
         return $user;
