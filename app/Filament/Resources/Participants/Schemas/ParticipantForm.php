@@ -2,9 +2,10 @@
 
 namespace App\Filament\Resources\Participants\Schemas;
 
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
 class ParticipantForm
@@ -41,6 +42,33 @@ class ParticipantForm
                     ->minLength(11)
                     ->maxLength(13)
                     ->required(),
+                FileUpload::make('ktp')
+                    ->label('KTP')
+                    ->image()
+                    ->directory('participants/ktp')
+                    ->disk('public')
+                    ->nullable(),
+
+                FileUpload::make('ijazah')
+                    ->label('Ijazah')
+                    ->image()
+                    ->directory('participants/ijazah')
+                    ->disk('public')
+                    ->nullable(),
+                FileUpload::make('sertifikat')
+                    ->label('Sertifikat')
+                    ->image()
+                    ->directory('participants/sertifikat')
+                    ->disk('public')
+                    ->nullable(),
+                Select::make('status')
+                    ->options([
+                        'pending' => 'Menunggu Verifikasi',
+                        'verified' => 'Terverifikasi',
+                    ])
+                    ->default('pending')
+                    ->required()
+                    ->disabled(! auth()->user()?->hasRole('super_admin')),
                 Textarea::make('address')
                     ->columnSpanFull(),
             ]);
