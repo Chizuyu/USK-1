@@ -14,7 +14,11 @@ class Participant extends Model
         'name',
         'gender',
         'phone_number',
-        'address'
+        'address',
+        'ktp',
+        'ijazah',
+        'sertifikat',
+        'status'
     ];
 
     protected static function booted(): void
