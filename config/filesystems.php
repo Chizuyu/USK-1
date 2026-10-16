@@ -37,11 +37,11 @@ return [
             'throw' => false,
             'report' => false,
         ],
-
+        //rtrim(env('APP_URL', 'http://localhost'), '/').
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => rtrim(env('APP_URL', 'http://localhost'), '/').'/storage',
+            'url' => '/storage',
             'visibility' => 'public',
             'throw' => false,
             'report' => false,

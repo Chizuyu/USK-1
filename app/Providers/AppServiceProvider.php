@@ -8,6 +8,7 @@ use App\Policies\RolePolicy;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -26,5 +27,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Gate::policy(Role::class, RolePolicy::class);
+        if (str_contains(request()->getHost(), 'ngrok') || request()->header('x-forwarded-proto') === 'https') {
+            URL::forceScheme('https');
+        }
     }
 }
